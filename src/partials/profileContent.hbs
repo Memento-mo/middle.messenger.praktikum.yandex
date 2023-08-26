@@ -1,0 +1,53 @@
+<main class="profile">
+  <section class="profile-back">
+    {{>back href="/"}}
+  </section>
+  <section class="profile-content">
+    <div class="profile-container">
+      <div class="profile-avatar">
+        {{{avatarSVG}}}
+      </div>
+
+      <div class="profile-fullname">
+        Глеб Пологов
+      </div>
+
+      <div class="profile-fields">
+        {{#each profileFields}}
+          <div class="profile-fields__field">
+            <label class="profile-fields__field-label">{{ this.title }}</label>
+            <input
+              class="profile-fields__field-input"
+              value="{{ this.value }}"
+              name="{{this.name }}"
+              type="{{ this.type }}"
+              disabled
+            >
+          </div>
+        {{/each}}
+        {{!-- {{#each passwordsField}}
+          <div class="profile-fields__field">
+            <label class="profile-fields__field-label">{{ this.title }}</label>
+            <input
+              class="profile-fields__field-input"
+              value="{{ this.value }}"
+              name="{{this.name }}"
+              type="{{ this.type }}"
+              disabled
+            >
+          </div>
+        {{/each}} --}}
+      </div>
+
+      <div class="profile-controls">
+        <button class="profile-controls__item">Изменить данные</button>
+        <button class="profile-controls__item">Изменить пароль</button>
+        <button class="profile-controls__item profile-controls__item-red">Выйти</button>
+
+        {{!-- {{>button label="Cохранить"}} --}}
+      </div>
+    </div>
+  </section>
+</main>
+
+<link rel="stylesheet" href="/partials/profileContent.scss">
