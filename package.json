@@ -2,7 +2,9 @@
   "name": "web-chat",
   "private": false,
   "version": "0.0.0",
-  "engine": "20.0.0",
+  "engines": {
+    "node": "20.0.0"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
