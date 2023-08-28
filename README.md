@@ -23,4 +23,5 @@ main - https://steady-dieffenbachia-ccad3b.netlify.app <br>
 404 - https://steady-dieffenbachia-ccad3b.netlify.app/pages/404.html <br>
 500 - https://steady-dieffenbachia-ccad3b.netlify.app/pages/500.html <br>
 Авторизация - https://steady-dieffenbachia-ccad3b.netlify.app/pages/login.html <br>
-Регистрация - https://steady-dieffenbachia-ccad3b.netlify.app/signin.html
+Регистрация - https://steady-dieffenbachia-ccad3b.netlify.app/signin.html <br>
+Профиль - https://steady-dieffenbachia-ccad3b.netlify.app/pages/profile
