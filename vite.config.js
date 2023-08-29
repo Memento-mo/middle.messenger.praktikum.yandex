@@ -51,6 +51,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         profile: resolve(__dirname, 'src/pages/profile.html'),
+        profileEdit: resolve(__dirname, 'src/pages/profile-edit.html'),
+        profileEditPasswords: resolve(__dirname, 'src/pages/profile-edit-passwords.html'),
         login: resolve(__dirname, 'src/pages/login.html'),
         signin: resolve(__dirname, 'src/pages/signin.html'),
         '404': resolve(__dirname, 'src/pages/404.html'),
