@@ -1,6 +1,10 @@
 .profile {
   display: flex;
 
+  &-form {
+    width: 100%;
+  }
+
   &-back {
     width: 64px;
     height: 100vh;
@@ -85,7 +89,7 @@
 
       &-label {
         color: #1e1e1e;
-        min-width: 100px;
+        min-width: 160px;
       }
       
       &-input {

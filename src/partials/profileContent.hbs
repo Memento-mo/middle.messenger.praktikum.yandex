@@ -25,26 +25,12 @@
             >
           </div>
         {{/each}}
-        {{!-- {{#each passwordsField}}
-          <div class="profile-fields__field">
-            <label class="profile-fields__field-label">{{ this.title }}</label>
-            <input
-              class="profile-fields__field-input"
-              value="{{ this.value }}"
-              name="{{this.name }}"
-              type="{{ this.type }}"
-              disabled
-            >
-          </div>
-        {{/each}} --}}
       </div>
 
       <div class="profile-controls">
-        <button class="profile-controls__item">Изменить данные</button>
-        <button class="profile-controls__item">Изменить пароль</button>
+        <a href="/pages/profile-edit.html" class="profile-controls__item">Изменить данные</a>
+        <a href="/pages/profile-edit-passwords.html" class="profile-controls__item">Изменить пароль</a>
         <button class="profile-controls__item profile-controls__item-red">Выйти</button>
-
-        {{!-- {{>button label="Cохранить"}} --}}
       </div>
     </div>
   </section>
