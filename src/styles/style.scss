@@ -1,0 +1,14 @@
+@import url('./reset.scss');
+@import url('./fonts.scss');
+
+:root {
+  --base-blue: #3369F3;
+  --grey-1: #999999;
+  --grey-2: #efefef;
+  --grey-3: #EAEAEA;
+  --black-1: #1E1E1E;
+}
+
+body {
+  font-family: 'Roboto';
+}

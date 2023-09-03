@@ -1,0 +1,126 @@
+.profile {
+  display: flex;
+
+  &-form {
+    width: 100%;
+  }
+
+  &-back {
+    width: 64px;
+    height: 100vh;
+    background: #FBFBFB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #EAEAEA;
+  }
+
+  &-container {
+    width: 510px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-content {
+    padding-top: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #EFEFEF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    &:hover::after {
+      position: absolute;
+      content: 'Поменять аватар';
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 16px;
+      background-color: #000000;
+      opacity: 0.5;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  &-fullname {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    color: #1e1e1e;
+  }
+
+  &-fields {
+    margin-top: 60px;
+    width: 100%;
+
+    &__field {
+      &:not(:last-child) {
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      margin-top: 10px;
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 13px;
+
+      &-label {
+        color: #1e1e1e;
+        min-width: 160px;
+      }
+      
+      &-input {
+        color: var(--grey-1);
+        background-color: transparent;
+        text-align: right;
+      }
+    }
+  }
+
+  &-controls {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__item {
+      &:not(:last-child) {
+        border-bottom: 1px solid #EAEAEA;
+      }
+
+      color: var(--base-blue);
+      font-size: 13px;
+      line-height: 13px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      text-align: left;
+
+      &-red {
+        color: #FF0000;
+      }
+    }
+  }
+}
