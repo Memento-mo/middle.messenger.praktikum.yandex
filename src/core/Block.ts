@@ -23,7 +23,7 @@ class Block {
 
   private _element: HTMLElement | null = null
 
-  private _meta: { props: any }
+  public _meta: { props: any }
 
   /** JSDoc
    * @param {string} tagName
@@ -110,7 +110,7 @@ class Block {
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate(_: any, __: any) {
     return true
   }
 
