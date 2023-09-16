@@ -1,3 +1,3 @@
-import './Back.scss'
+import './back.scss'
 
-export { default as Back } from './Back.hbs?raw'
+export { default as Back } from './back.hbs?raw'
