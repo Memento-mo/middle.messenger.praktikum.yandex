@@ -1,7 +1,11 @@
 import Block from '../../core/Block'
 
+interface IProps {
+  onBlur: () => void
+}
+
 export class InputField extends Block {
-  constructor(props) {
+  constructor(props: IProps) {
     super({
       ...props,
       onBlur: () => this.validate(),
