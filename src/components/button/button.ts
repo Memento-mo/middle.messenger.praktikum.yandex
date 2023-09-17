@@ -1,8 +1,4 @@
-import Block from '../../core/Block'
-
-interface IProps {
-  onClick: () => void
-}
+import Block, { IProps } from '../../core/Block'
 
 export class Button extends Block {
   constructor(props: IProps) {

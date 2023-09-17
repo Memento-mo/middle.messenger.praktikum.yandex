@@ -2,6 +2,10 @@ import { nanoid } from 'nanoid'
 import Handlebars from 'handlebars'
 import EventBus from './EventBus'
 
+export interface IProps {
+  [key: string]: any
+}
+
 // Нельзя создавать экземпляр данного класса
 class Block {
   static EVENTS = {
@@ -9,11 +13,12 @@ class Block {
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
+    FLOW_CWU: 'flow:component-will-unmount',
   }
 
   public id = nanoid(6)
 
-  protected props: any
+  protected props: IProps
 
   protected refs: Record<string, Block> = {}
 
@@ -31,7 +36,7 @@ class Block {
    *
    * @returns {void}
    */
-  constructor(propsWithChildren: any = {}) {
+  constructor(propsWithChildren: IProps = {}) {
     const eventBus = new EventBus()
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren)
@@ -50,8 +55,8 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT)
   }
 
-  _getChildrenAndProps(childrenAndProps: any) {
-    const props: Record<string, any> = {}
+  _getChildrenAndProps(childrenAndProps: IProps) {
+    const props: IProps = {}
     const children: Record<string, Block> = {}
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
@@ -66,7 +71,7 @@ class Block {
   }
 
   _addEvents() {
-    const { events = {} } = this.props as { events: Record<string, () => void> }
+    const { events = {} } = this.props as unknown as { events: Record<string, (e: Event) => void> }
 
     Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName])
@@ -78,6 +83,7 @@ class Block {
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
+    eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this))
   }
 
   private _init() {
@@ -114,7 +120,20 @@ class Block {
     return true
   }
 
-  setProps = (nextProps: any) => {
+  _componentWillUnmount() {
+    this.componentWillUnmount()
+    this._removeEvents()
+  }
+
+  componentWillUnmount() {}
+
+  public dispatchComponentWillUnmount() {
+    Object.values(this.children).forEach((child) => child.dispatchComponentWillUnmount())
+
+    this.eventBus().emit(Block.EVENTS.FLOW_CWU)
+  }
+
+  setProps = (nextProps: IProps) => {
     if (!nextProps) {
       return
     }
@@ -158,6 +177,14 @@ class Block {
 
   protected render(): string {
     return ''
+  }
+
+  _removeEvents() {
+    const { events = {} } = this.props as unknown as { events: Record<string, (e: Event) => void> }
+
+    Object.keys(events).forEach((eventName) => {
+      this._element?.removeEventListener(eventName, events[eventName])
+    })
   }
 
   getContent() {
