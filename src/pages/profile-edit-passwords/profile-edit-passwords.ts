@@ -1,4 +1,6 @@
+import UserController from '../../controllers/UserController'
 import Block from '../../core/Block'
+import { IUserEditPassword } from '../../types/user'
 import { validate } from '../../utils/validate'
 
 export class ProfileEditPasswordsPage extends Block {
@@ -12,17 +14,30 @@ export class ProfileEditPasswordsPage extends Block {
         { title: 'Повторите новый пароль', type: 'password', name: 'repeatPassword' },
       ],
       onLogin: (event: Event) => {
-        event.preventDefault()
-        const oldPassword = this.refs.oldPassword.value()
-        const newPassword = this.refs.newPassword.value()
-        const repeatPassword = this.refs.repeatPassword.value()
+        let isValid = true
 
-        const data = {
+        event.preventDefault()
+        const oldPassword = this.refs.oldPassword.value() as string
+        const newPassword = this.refs.newPassword.value() as string
+        const repeatPassword = this.refs.repeatPassword.value() as string
+
+        const data: IUserEditPassword = {
           oldPassword,
           newPassword,
-          repeatPassword,
         }
-        console.log(data)
+
+        if (
+          newPassword !== repeatPassword
+          // @ts-ignore
+            || this.refs.newPassword.props.validate(newPassword)
+            || !oldPassword
+        ) {
+          isValid = false
+        }
+
+        if (isValid) {
+          UserController.fetchEditPassword(data)
+        }
       },
     })
   }

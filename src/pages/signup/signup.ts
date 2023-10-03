@@ -1,4 +1,6 @@
+import AuthController from '../../controllers/AuthController'
 import Block from '../../core/Block'
+import { ISignupData } from '../../types/user'
 
 import { validate } from '../../utils/validate'
 
@@ -39,30 +41,48 @@ const fields = [
     name: 'password',
     validate: (value: string) => validate(value, /^(?=.*[A-Z])(?=.*\d).{8,40}$/, 'от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра.'),
   },
-  { title: 'Пароль (еще раз)', type: 'password', name: 'password-repeat' },
+  { title: 'Пароль (еще раз)', type: 'password', name: 'passwordConfirm' },
 ]
 
-export class SignInPage extends Block {
+export class SignUpPage extends Block {
   constructor() {
     super({
       fields,
-      onLogin: (event: Event) => {
+      onSignUp: (event: Event) => {
+        let isValid = true
+
         event.preventDefault()
 
-        const refInputs = ['email', 'login', 'first_name', 'second_name', 'phone', 'password', 'password-repeat']
-        const data: {
-          [key in typeof refInputs[number]]: string
-        } = {}
+        const refInputs: Array<keyof ISignupData> = ['email', 'login', 'first_name', 'second_name', 'phone', 'password']
+        const data: ISignupData = {
+          first_name: '',
+          second_name: '',
+          email: '',
+          password: '',
+          phone: '',
+          login: '',
+        }
 
         refInputs.forEach((key) => {
           const value = this.refs[key].value()
 
           if (value) {
-            data[key] = value
+            // @ts-ignore
+            if (!this.refs[key].props.validate(value)) {
+              data[key] = value
+            }
           }
         })
 
-        console.log(data)
+        Object.keys(data).forEach((key) => {
+          if (!data[key as keyof typeof data]) {
+            isValid = false
+          }
+        })
+
+        if (isValid) {
+          AuthController.fetchSignup(data)
+        }
       },
     })
   }
@@ -73,12 +93,12 @@ export class SignInPage extends Block {
         {{#> AuthCard
               fields=fields
               ref="loginForm"
-              onClick=onLogin
+              onClick=onSignUp
               buttonLabel="Зарегистрироваться"
               buttonLinkLabel="Войти"
               pageTitle="Регистрация"
-              href="login"
-              page="signin"
+              href="/"
+              page="signupPage"
         }}
           {{#each fields}}
             {{{ InputField

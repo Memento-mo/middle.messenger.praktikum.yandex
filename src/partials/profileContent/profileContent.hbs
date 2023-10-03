@@ -1,13 +1,13 @@
 <main class="profile">
   <section class="profile-back">
-    {{>Back href="/"}}
+    {{{ Back href="/" }}}
   </section>
   <section class="profile-content">
     <div class="profile-container">
-      {{{ Avatar }}}
+      {{{ Avatar onClick=onHandleModal }}}
 
       <div class="profile-fullname">
-        Глеб Пологов
+        {{ firstName }} {{ secondName }}
       </div>
 
       <div class="profile-fields">
@@ -26,10 +26,19 @@
       </div>
 
       <div class="profile-controls">
-        <a page="profile-edit" class="profile-controls__item">Изменить данные</a>
-        <a page="profile-edit-passwords" class="profile-controls__item">Изменить пароль</a>
-        <button class="profile-controls__item profile-controls__item-red">Выйти</button>
+        {{{ Link
+              pathname='/settings/edit'
+              title="Изменить данные"
+              classes="profile-controls__item"
+        }}}
+        {{{ Link
+              pathname='/settings/edit/passwords'
+              title="Изменить пароль"
+              classes="profile-controls__item"
+        }}}
+        {{{ Button label="Выйти" classes="profile-controls__item profile-controls__item-red" onClick=onLogout }}}
       </div>
     </div>
+    {{{ AvatarModal isVisible=isVisible onCancel=onHandleModal }}}
   </section>
 </main>

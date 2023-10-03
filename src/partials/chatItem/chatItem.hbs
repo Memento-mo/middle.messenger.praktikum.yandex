@@ -3,18 +3,18 @@
 
   <div class="chat-item__text">
     <div class="chat-item__text-name">
-      Андрей
+      {{ title }}
     </div>
     <div class="chat-item__text-msg">
-      Друзья, у меня для вас особенный выпуск новостей! Я хочу вам сказать.
+      {{ last_message }}
     </div>
   </div>
   <div class="chat-item__metainfo">
     <div class="chat-item__metainfo-time">
-      10:49
+      {{ time }}
     </div>
     <div class="chat-item__metainfo-count">
-      2
+      {{ unread_count }}
     </div>
   </div>
 </div>

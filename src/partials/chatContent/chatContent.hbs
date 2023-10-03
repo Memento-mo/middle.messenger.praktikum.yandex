@@ -1,17 +1,24 @@
 <main class="chat">
   <section class="chat-left">
-    <div class="chat-head">
-      <div class="chat-head__profile">
-        <a page="profile">
-          Профиль >
-        </a>
+    <div>
+      <div class="chat-head">
+        <div class="chat-head__profile">
+          {{{ Link
+              pathname='/settings'
+              title="Профиль >"
+          }}}
+        </div>
+        <div class="chat-head__search">
+          <input type="text" placeholder="Поиск">
+        </div>
       </div>
-      <div class="chat-head__search">
-        <input type="text" placeholder="Поиск">
+      <div class="chat-content">
+        {{{ ChatList }}}
       </div>
     </div>
-    <div class="chat-content">
-      {{> ChatItem }}
+    {{{ AddChatModal isVisible=isVisible onCancel=onHandleModal }}}
+    <div class="chat-footer">
+      {{{ Button label="Создать чат" onClick=onHandleModal }}}
     </div>
   </section>
   <section class="chat-right">

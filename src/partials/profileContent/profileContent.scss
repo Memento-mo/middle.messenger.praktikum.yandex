@@ -34,7 +34,8 @@
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    background: #EFEFEF;
+    background-size: contain;
+    background-color: #EFEFEF;
     display: flex;
     justify-content: center;
     align-items: center;
