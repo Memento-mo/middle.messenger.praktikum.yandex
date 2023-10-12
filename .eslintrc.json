@@ -13,6 +13,7 @@
     "no-unused-vars": "off",
     "max-len": "off",
     "camelcase": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "no-use-before-define": "off",
     "import/no-extraneous-dependencies": "off",
     "no-underscore-dangle": "off",
