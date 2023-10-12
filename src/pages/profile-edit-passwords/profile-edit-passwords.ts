@@ -28,7 +28,6 @@ export class ProfileEditPasswordsPage extends Block {
 
         if (
           newPassword !== repeatPassword
-          // @ts-ignore
             || this.refs.newPassword.props.validate(newPassword)
             || !oldPassword
         ) {

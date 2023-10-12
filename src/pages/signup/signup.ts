@@ -67,7 +67,6 @@ export class SignUpPage extends Block {
           const value = this.refs[key].value()
 
           if (value) {
-            // @ts-ignore
             if (!this.refs[key].props.validate(value)) {
               data[key] = value
             }
