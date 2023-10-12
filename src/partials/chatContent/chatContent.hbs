@@ -17,16 +17,20 @@
       </div>
     </div>
     {{{ AddChatModal isVisible=isVisible onCancel=onHandleModal }}}
+    {{{ AddUserChat isVisible=isVisibleAddUser onCancel=onHandleModalAddUser }}}
+    {{{ RemoveUserChat isVisible=isVisibleRemoveUser onCancel=onHandleModalRemoveUser }}}
+
     <div class="chat-footer">
       {{{ Button label="Создать чат" onClick=onHandleModal }}}
     </div>
   </section>
   <section class="chat-right">
-    {{!-- <div class="chat-default">
-      Выберите чат чтобы отправить сообщение
-    </div> --}}
     <div>
-      {{> ChatOnline}}
+      {{{
+        ChatOnline
+          onHandleModalAddUser=onHandleModalAddUser
+          onHandleModalRemoveUser=onHandleModalRemoveUser
+      }}}
     </div>
   </section>
 </main>

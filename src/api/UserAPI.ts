@@ -1,4 +1,6 @@
-import { IUser, IUserEdit, IUserEditPassword } from '../types/user'
+import {
+  IUser, IUserEdit, IUserEditPassword, IUserSearch,
+} from '../types/user'
 import HTTPTransport from './HTTPTransport'
 
 export default class UserAPI {
@@ -18,5 +20,9 @@ export default class UserAPI {
 
   avatar(data: FormData): Promise<IUser> {
     return this.http.put('/profile/avatar', { data })
+  }
+
+  search(data: IUserSearch): Promise<IUser[]> {
+    return this.http.post('/search', { data })
   }
 }

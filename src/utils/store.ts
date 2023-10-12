@@ -19,7 +19,7 @@ export interface State {
     data: IUser
   }
   chats?: Chat
-  messages?: IMessage[]
+  messages?: any
   currentChat?: number
 }
 

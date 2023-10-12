@@ -1,6 +1,4 @@
 export { ChatContent } from './chatContent'
-export { ChatItem } from './chatItem'
-export { ChatOnline } from './chatOnline'
 export { ErrorContent } from './errorContent'
 export { ProfileContent } from './profileContent'
 export { ProfileEditContent } from './profileEditContent'

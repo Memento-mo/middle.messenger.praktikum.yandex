@@ -18,7 +18,13 @@ class List extends Block {
     return `
       <div>
         {{#each chats}}
-          {{> ChatItem }}
+          {{{ ChatItem
+              title=this.title
+              last_message=this.last_message.content
+              time=this.last_message.time
+              unread_count=this.unread_count
+              id=this.id
+          }}}
         {{/each}}
       </div>
     `

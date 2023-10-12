@@ -1,7 +1,13 @@
-import UserAPI from '../api/UserAPI'
-import router from '../router/router'
-import { IUser, IUserEdit, IUserEditPassword } from '../types/user'
 import store from '../utils/store'
+
+import UserAPI from '../api/UserAPI'
+
+import router from '../router/router'
+import AuthController from './AuthController'
+
+import type {
+  IUser, IUserEdit, IUserEditPassword, IUserSearch,
+} from '../types/user'
 
 class UserController {
   private api = new UserAPI()
@@ -9,6 +15,7 @@ class UserController {
   async fetchEditProfile(data: IUserEdit) {
     try {
       await this.api.edit(data)
+      AuthController.fetchUser()
     } catch (error) {
       console.error(error)
     }
@@ -30,6 +37,18 @@ class UserController {
     } catch (error) {
       console.error(error)
     }
+  }
+
+  async fetchSearchUser(data: IUserSearch): Promise<IUser[]> {
+    try {
+      const user: IUser[] = await this.api.search(data)
+
+      return user
+    } catch (error) {
+      console.error(error)
+    }
+
+    return []
   }
 }
 

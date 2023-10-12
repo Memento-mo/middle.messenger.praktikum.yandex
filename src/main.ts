@@ -52,9 +52,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.ServerError, pages['server-error'])
 
   try {
-    await AuthController.fetchUser()
+    const user = await AuthController.fetchUser()
 
     Router.start()
+
+    if (user) {
+      Router.go('/messenger')
+    }
   } catch (error) {
     Router.start()
   }

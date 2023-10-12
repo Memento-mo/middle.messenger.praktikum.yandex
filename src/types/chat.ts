@@ -27,3 +27,21 @@ export interface IChat {
 export interface ICreateChat {
   title: string
 }
+
+export interface IAddUserChat {
+  users: number[]
+  chatId: number
+}
+
+export interface IRemoveUsersChat {
+  users: number[]
+  chatId: number
+}
+
+export interface IAllUsersChat {
+  id: number
+}
+
+export interface IToken {
+  id: number
+}

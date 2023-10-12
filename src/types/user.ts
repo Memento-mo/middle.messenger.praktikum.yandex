@@ -17,6 +17,7 @@ export interface IUser {
   first_name: string;
   second_name: string;
   display_name?: string;
+  role?: string
   login: string;
   email: string;
   password: string;
@@ -36,4 +37,8 @@ export interface IUserEdit {
 export interface IUserEditPassword {
   oldPassword: string
   newPassword: string
+}
+
+export interface IUserSearch {
+  login: string
 }

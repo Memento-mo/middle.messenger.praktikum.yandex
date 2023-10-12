@@ -3,7 +3,7 @@ import router from '../router/router'
 
 import AuthAPI from '../api/AuthAPI'
 
-import type { ISigninData, ISignupData } from '../types/user'
+import type { ISigninData, ISignupData, IUser } from '../types/user'
 
 class AuthController {
   private api = new AuthAPI()
@@ -30,13 +30,16 @@ class AuthController {
     }
   }
 
-  async fetchUser() {
+  async fetchUser(): Promise<IUser | undefined> {
     try {
       const user = await this.api.getUser()
       store.set('user.data', user)
+
+      return user
     } catch (error) {
       console.error(error)
     }
+    return undefined
   }
 
   async fetchLogout() {
