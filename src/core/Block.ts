@@ -18,7 +18,7 @@ class Block {
 
   public id = nanoid(6)
 
-  protected props: IProps
+  props: IProps
 
   protected refs: Record<string, Block> = {}
 
