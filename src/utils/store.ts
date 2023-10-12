@@ -3,7 +3,7 @@ import EventBus from '../core/EventBus'
 import { set } from './helpers'
 
 import type { IUser } from '../types/user'
-import type { IChat, IMessage } from '../types/chat'
+import type { IChat } from '../types/chat'
 
 export enum StoreEvents {
   Updated = 'updated',

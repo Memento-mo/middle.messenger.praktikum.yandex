@@ -1,5 +1,4 @@
 import ChatsController from '../../controllers/ChatsController'
-import UserController from '../../controllers/UserController'
 import Block from '../../core/Block'
 import { IUser } from '../../types/user'
 import { connect } from '../../utils/connect'
