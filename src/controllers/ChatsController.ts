@@ -2,7 +2,7 @@ import ChatsAPI from '../api/ChatsAPI'
 import store from '../utils/store'
 
 import type {
-  IAddUserChat, IAllUsersChat, ICreateChat, IRemoveUsersChat, IToken,
+  IAddUserChat, IAllUsersChat, ICreateChat, IRemoveChat, IRemoveUsersChat, IToken,
 } from '../types/chat'
 import { IUser } from '../types/user'
 import messagesController from './MessagesController'
@@ -40,7 +40,7 @@ class ChatsController {
   async fetchAllChats() {
     try {
       const chats = await this.api.all()
-      console.log(chats)
+
       chats.forEach((chat) => {
         if (chat.id) {
           messagesController.connect(chat.id)
@@ -68,6 +68,14 @@ class ChatsController {
   async fetchRemoveUsersChat(data: IRemoveUsersChat) {
     try {
       await this.api.removeUsersChar(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async fetchRemoveChat(data: IRemoveChat) {
+    try {
+      await this.api.removeChat(data)
     } catch (error) {
       console.error(error)
     }

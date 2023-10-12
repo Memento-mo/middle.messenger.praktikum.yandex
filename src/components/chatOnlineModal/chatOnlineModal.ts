@@ -1,23 +1,6 @@
 import Block from '../../core/Block'
 
 export class ChatOnlineModal extends Block {
-  protected init(): void {
-    this.props.removeUser = this.removeUser.bind(this)
-    this.props.removeChat = this.removeChat.bind(this)
-  }
-
-  addUser() {
-    console.log('add')
-  }
-
-  removeUser() {
-    console.log('remove user')
-  }
-
-  removeChat() {
-    console.log('remove chat')
-  }
-
   protected render(): string {
     return `
       <div class="chat-online-modal">
@@ -31,7 +14,7 @@ export class ChatOnlineModal extends Block {
         <div class="chat-online-modal__users">
           {{{ ChatOnlineModalButton title="Добавить пользователя" click=this.onHandleModalAddUser }}}
           {{{ ChatOnlineModalButton title="Удалить пользователя" click=this.onHandleModalRemoveUser }}}
-          {{{ ChatOnlineModalButton title="Удалить чат" click=this.removeChat }}}
+          {{{ ChatOnlineModalButton title="Удалить чат" click=this.onHandleRemoveChat }}}
         </div>
       </div>
     `

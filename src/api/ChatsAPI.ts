@@ -1,7 +1,7 @@
 import HTTPTransport from './HTTPTransport'
 
 import type {
-  IAddUserChat, IAllUsersChat, IChat, ICreateChat, IRemoveUsersChat, IToken,
+  IAddUserChat, IAllUsersChat, IChat, ICreateChat, IRemoveChat, IRemoveUsersChat, IToken,
 } from '../types/chat'
 import { IUser } from '../types/user'
 
@@ -34,5 +34,9 @@ export default class ChatsAPI {
 
   all(): Promise<IChat[]> {
     return this.http.get('/')
+  }
+
+  removeChat(data: IRemoveChat) {
+    return this.http.delete('/', { data })
   }
 }

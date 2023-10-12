@@ -45,3 +45,7 @@ export interface IAllUsersChat {
 export interface IToken {
   id: number
 }
+
+export interface IRemoveChat {
+  chatId: number
+}

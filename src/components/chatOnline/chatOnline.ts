@@ -46,7 +46,6 @@ class ChatOnlineContent extends Block {
         <section class="chat-online">
           <header class="chat-online__header">
             <div class="chat-online__profile">
-              <div class="chat-online__profile-avatar"></div>
               <div class="chat-online__profile-name">${title}</div>
             </div>
 
@@ -55,6 +54,7 @@ class ChatOnlineContent extends Block {
               ChatOnlineModal
                 onHandleModalAddUser=onHandleModalAddUser
                 onHandleModalRemoveUser=onHandleModalRemoveUser
+                onHandleRemoveChat=onHandleRemoveChat
             }}}
           </header>
           <main class="chat-online__content">

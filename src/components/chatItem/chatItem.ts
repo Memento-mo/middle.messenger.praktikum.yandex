@@ -36,8 +36,6 @@ export default class ChatItem extends Block {
 
     return `
       <div class="chat-item">
-        <div class="chat-item__avatar"></div>
-      
         <div class="chat-item__text">
           <div class="chat-item__text-name">
             ${title}
