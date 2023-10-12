@@ -16,7 +16,7 @@ app.use(cors())
 app.use(express.static(staticFilesPath))
 
 app.get('/', (req, res) => {
-  res.status().send(200)
+  res.status(200).send(200)
 })
 
 app.get('*', (req, res) => {
