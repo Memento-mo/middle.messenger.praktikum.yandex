@@ -1,0 +1,35 @@
+<main class="profile">
+  <section class="profile-back">
+    {{>Back href="/"}}
+  </section>
+  <section class="profile-content">
+    <div class="profile-container">
+      {{{ Avatar }}}
+
+      <div class="profile-fullname">
+        Глеб Пологов
+      </div>
+
+      <div class="profile-fields">
+        {{#each fields}}
+          <div class="profile-fields__field">
+            <label class="profile-fields__field-label">{{ this.title }}</label>
+            <input
+              class="profile-fields__field-input"
+              value="{{ this.value }}"
+              name="{{this.name }}"
+              type="{{ this.type }}"
+              disabled
+            >
+          </div>
+        {{/each}}
+      </div>
+
+      <div class="profile-controls">
+        <a page="profile-edit" class="profile-controls__item">Изменить данные</a>
+        <a page="profile-edit-passwords" class="profile-controls__item">Изменить пароль</a>
+        <button class="profile-controls__item profile-controls__item-red">Выйти</button>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,16 @@
+<div class="card-form {{page}}">
+  <div class="card-form__title">
+    {{pageTitle}}
+  </div>
+
+  <form class="card-form__content">
+    <div class="card-form__content_wrapper">
+      {{> @partial-block }}
+    </div>
+
+    <div class="card-form__buttons">
+      {{{ Button label=buttonLabel onClick=onClick }}}
+      {{> ButtonLink label=buttonLinkLabel href=href }}
+    </div>
+  </form>
+</div>

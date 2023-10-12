@@ -1,0 +1,1 @@
+export { InputFieldProfile } from './inputFieldProfile'
