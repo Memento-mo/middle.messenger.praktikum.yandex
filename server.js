@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   res.status(200).send(200)
 })
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.status(200).sendFile(path.join(staticFilesPath, 'index.html'))
 })
 
