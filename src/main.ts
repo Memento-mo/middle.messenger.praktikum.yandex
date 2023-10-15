@@ -5,16 +5,29 @@ import * as Partials from './partials'
 import * as Pages from './pages'
 import { registerComponent } from './core/registerComponent'
 import Block from './core/Block'
+import Router from './router/router'
+import AuthController from './controllers/AuthController'
 
 const pages = {
   chat: Pages.ChatPage,
   login: Pages.LoginPage,
   notfound: Pages.NotFoundPage,
-  profile: Pages.ProfilePage,
-  'profile-edit': Pages.ProfileEditPage,
-  'profile-edit-passwords': Pages.ProfileEditPasswordsPage,
+  settings: Pages.ProfilePage,
+  'settings-edit': Pages.ProfileEditPage,
+  'settings-edit-passwords': Pages.ProfileEditPasswordsPage,
   'server-error': Pages.ServerErrorPage,
-  signin: Pages.SignInPage,
+  signup: Pages.SignUpPage,
+}
+
+enum Routes {
+  Chat = '/messenger',
+  SignUp = '/sign-up',
+  Login = '/',
+  Settings = '/settings',
+  SettingsEdit = '/settings/edit',
+  SettingsEditPasswords = '/settings/edit/passwords',
+  Notfound = '/404',
+  ServerError = '/500',
 }
 
 Object.entries(Partials).forEach(([name, component]) => {
@@ -27,39 +40,26 @@ Object.entries(Components).forEach(([name]) => {
   registerComponent(name, componentLc)
 })
 
-function navigate(page: keyof typeof pages) {
-  const app = document.getElementById('app')
+document.addEventListener('DOMContentLoaded', async () => {
+  Router
+    .use(Routes.Login, pages.login)
+    .use(Routes.Chat, pages.chat)
+    .use(Routes.SignUp, pages.signup)
+    .use(Routes.Settings, pages.settings)
+    .use(Routes.SettingsEdit, pages['settings-edit'])
+    .use(Routes.SettingsEditPasswords, pages['settings-edit-passwords'])
+    .use(Routes.Notfound, pages.notfound)
+    .use(Routes.ServerError, pages['server-error'])
 
-  const Component = pages[page]
+  try {
+    const user = await AuthController.fetchUser()
 
-  const component = new Component()
+    Router.start()
 
-  if (page === 'chat') {
-    app?.append(component.getContent()!)
-  } else {
-    app?.replaceChildren(component.getContent() || '')
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const pageFromQuery = window.location.pathname.split('/')[1] as keyof typeof pages
-
-  if (!pages[pageFromQuery]) {
-    navigate('chat')
-  } else {
-    navigate(pageFromQuery)
-  }
-});
-
-document.addEventListener('click', (e) => {
-  if (e.target) {
-    const page = (e.target as HTMLElement).getAttribute('page') as keyof typeof pages
-
-    if (page) {
-      navigate(page)
-
-      e.preventDefault()
-      e.stopImmediatePropagation()
+    if (user) {
+      Router.go('/messenger')
     }
+  } catch (error) {
+    Router.start()
   }
 })

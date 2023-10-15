@@ -1,10 +1,10 @@
 <main class="profile">
   <section class="profile-back">
-    {{>Back href="/"}}
+    {{{ Back }}}
   </section>
   <section class="profile-content">
     <div class="profile-container">
-      {{{ Avatar }}}
+      {{{ Avatar onClick=onHandleModal }}}
 
       <form class="profile-form">
         <div class="profile-fields">
@@ -17,4 +17,6 @@
       </form>
     </div>
   </section>
+
+  {{{ AvatarModal isVisible=isVisible onCancel=onHandleModal }}}
 </main>

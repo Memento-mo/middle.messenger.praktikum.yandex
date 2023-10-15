@@ -1,3 +1,4 @@
+import AuthController from '../../controllers/AuthController'
 import Block from '../../core/Block'
 
 export class LoginPage extends Block {
@@ -19,10 +20,10 @@ export class LoginPage extends Block {
       ],
       onLogin: (event: Event) => {
         event.preventDefault()
-        const login = this.refs.login.value()
-        const password = this.refs.password.value()
-        console.log(login)
-        console.log(password)
+        const login = this.refs.login.value() as string
+        const password = this.refs.password.value() as string
+
+        AuthController.fetchLogin({ login, password })
       },
     })
   }
@@ -36,7 +37,7 @@ export class LoginPage extends Block {
               pageTitle="Войти"
               onClick=onLogin
               buttonLinkLabel="Нет аккаунта?"
-              href="signin"
+              href="/sign-up"
               page="loginPage"
         }}
           {{#each fields}}

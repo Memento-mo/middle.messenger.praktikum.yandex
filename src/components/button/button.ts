@@ -1,4 +1,9 @@
-import Block, { IProps } from '../../core/Block'
+import Block from '../../core/Block'
+
+interface IProps {
+  onClick: () => void
+  classes?: string
+}
 
 export class Button extends Block {
   constructor(props: IProps) {
@@ -10,7 +15,7 @@ export class Button extends Block {
   }
 
   protected render() {
-    const { label } = this.props
-    return `<button class="button">${label}</button>`
+    const { label, classes } = this.props
+    return `<button class="${classes || 'button'}">${label}</button>`
   }
 }
