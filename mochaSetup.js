@@ -1,12 +1,15 @@
 import { JSDOM } from 'jsdom'
+import { describe, it } from 'mocha'
 
-const dom = new JSDOM('<div class="app"></div>', {
-  url: 'http://localhost:3000',
-})
+// jsdom
+const jsdom = new JSDOM(`<body>
+<div id="app"></div>
+</body>`)
 
-global.dom = dom
-global.window = dom.window
+global.window = jsdom.window
+global.document = jsdom.window.document
 
-global.document = dom.window.document
-global.Node = dom.window.Node
-global.MouseEvent = dom.window.MouseEvent
+// mocha
+global.describe = describe
+global.it = it
+global.MouseEvent = jsdom.window.MouseEvent
