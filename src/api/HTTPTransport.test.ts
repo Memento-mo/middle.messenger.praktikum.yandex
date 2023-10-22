@@ -11,10 +11,9 @@ describe('HTTPTransport', () => {
   const requests: SinonFakeXMLHttpRequest[] = []
 
   beforeEach(() => {
-    xhr = sinon.useFakeXMLHttpRequest()
+    xhr = sinon.useFakeXMLHttpRequest();
 
-    // @ts-ignore
-    global.XMLHttpRequest = xhr
+    (global as any).XMLHttpRequest = xhr
 
     xhr.onCreate = (request: SinonFakeXMLHttpRequest) => {
       requests.push(request)
