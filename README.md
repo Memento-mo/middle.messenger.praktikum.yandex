@@ -14,6 +14,9 @@ npm run dev
 # build for production
 npm run build
 
+# tests
+npm run test
+
 # serve with express at port locahost:3000
 npm run start
 ```
