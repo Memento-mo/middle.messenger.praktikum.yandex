@@ -70,7 +70,7 @@ describe('HTTPTransport', () => {
 
     const [request] = requests
 
-    const name = JSON.parse(request.requestBody).user
+    const name = JSON.parse(request.requestBody)?.user
 
     expect(name).to.be.eq('gleb')
   })
