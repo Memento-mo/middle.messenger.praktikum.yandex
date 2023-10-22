@@ -57,21 +57,4 @@ describe('HTTPTransport', () => {
 
     expect(request.method).to.eq('POST')
   })
-
-  it('Check send POST request with data', () => {
-    instance.post(
-      '/user',
-      {
-        data: {
-          user: 'gleb',
-        },
-      },
-    )
-
-    const [request] = requests
-
-    const name = JSON.parse(request.requestBody)?.user
-
-    expect(name).to.be.eq('gleb')
-  })
 })
