@@ -3,7 +3,7 @@ import Route from './route'
 class Router {
   private static __instance: Router | null = null;
 
-  private routes: Route[] = []
+  public routes: Route[] = []
 
   private history: History | undefined = window.history
 
@@ -70,7 +70,7 @@ class Router {
     this.history?.forward()
   }
 
-  private getRoute(pathname: string): Route | undefined {
+  public getRoute(pathname: string): Route | undefined {
     return this.routes.find((route) => route.match(pathname))
   }
 }
