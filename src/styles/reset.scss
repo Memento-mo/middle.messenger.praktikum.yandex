@@ -9,16 +9,11 @@
   border: 0 solid transparent;
 }
 
-// prevent iOS font size change
-html {
-  -webkit-text-size-adjust: 100%;
-}
-
 // reset body line-height
 body {
   min-height: 100vh;
   line-height: 1;
-  text-rendering: optimizeSpeed;
+  text-rendering: optimizespeed;
 }
 
 // all media elements set to block and full width
@@ -55,6 +50,7 @@ button, [role="button"] {
   cursor: pointer;
   background-color: transparent;
   -webkit-tap-highlight-color: transparent;
+
   &:focus {
     outline: 0;
   }
@@ -84,36 +80,6 @@ ol, ul {
   list-style: none;
 }
 
-// reset text input style
-[type=date],
-[type=datetime],
-[type=datetime-local],
-[type=email],
-[type=month],
-[type=number],
-[type=password],
-[type=search],
-[type=tel],
-[type=text],
-[type=time],
-[type=url],
-[type=week],
-textarea,
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 100%;
-  &:focus {
-    outline: 0;
-  }
-}
-
-// reset firefox placeholder opacity
-::-moz-placeholder {
-  opacity: 1;
-}
-
 // reset textarea style
 textarea {
   // move the label to the top
@@ -123,12 +89,35 @@ textarea {
   overflow: auto;
 }
 
+// reset text input style
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+textarea,
+select {
+  appearance: none;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
 // reset checkbox and radio style
 [type='checkbox'],
 [type='radio'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
+
   &:focus {
     outline: 0
   }

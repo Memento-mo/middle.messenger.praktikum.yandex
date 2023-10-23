@@ -60,7 +60,6 @@ export default class HTTPTransport {
       xhr.ontimeout = () => reject(new Error('timeout'));
 
       let sendData: FormData | string;
-
       if (!(data instanceof FormData)) {
         xhr.setRequestHeader('Content-Type', 'application/json');
         data = JSON.stringify(data) as string;

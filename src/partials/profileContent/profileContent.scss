@@ -53,7 +53,7 @@
       font-size: 16px;
       font-weight: 500;
       line-height: 16px;
-      background-color: #000000;
+      background-color: #000;
       opacity: 0.5;
       height: 100%;
       width: 100%;
@@ -86,7 +86,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       font-size: 13px;
       font-weight: 500;
       line-height: 13px;
@@ -123,7 +122,7 @@
       text-align: left;
 
       &-red {
-        color: #FF0000;
+        color: #F00;
       }
     }
   }
