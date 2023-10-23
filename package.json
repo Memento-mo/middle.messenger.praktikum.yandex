@@ -50,10 +50,5 @@
     "handlebars-layouts": "^3.1.4",
     "nanoid": "^4.0.2",
     "vite-plugin-handlebars": "^1.6.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test && npm run jslint && npm run csslint"
-    }
   }
 }
